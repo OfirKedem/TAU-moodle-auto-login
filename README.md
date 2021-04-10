@@ -4,7 +4,7 @@ For installing the script follow these steps:
 2. Go to this [link](https://greasyfork.org/en/scripts/424813-tau-moodle-auto-login) and install the script.
 3. Click the `TAMPERMONKEY` icon and go to the Dashboard.
 4. Click the *TAU-Moodle auto login* script.
-5. Change `YOUR_ID` to your ID number. 
+5. Change `ID_NUMBER` to your ID number. 
 6. Ctrl-S to save.
 
 
