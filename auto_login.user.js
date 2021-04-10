@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         TAU-Moodle auto sing in
+// @name         TAU-Moodle auto login
 // @name:he           כניסה אוטומטית למודל
 // @namespace    http://tampermonkey.net/
 // @version      0.1
