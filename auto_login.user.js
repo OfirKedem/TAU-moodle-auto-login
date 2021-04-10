@@ -23,8 +23,6 @@
 
         document.forms[0].elements["Ecom_User_Pid"].value=ID_NUMBER;
         setTimeout(clickLogin, 1000);
-        
-
     }
 
     function redirectME() {
