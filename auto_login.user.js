@@ -3,7 +3,7 @@
 // @name:he           כניסה אוטומטית למודל
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  An aumatic login script for TAU moodle.
+// @description  An automatic login script for TAU moodle.
 // @description:he  מאפשר להכנס למודל של תל אביב מהר
 // @author       Ofir Kedem
 // @include      https://nidp.tau.ac.il/*
