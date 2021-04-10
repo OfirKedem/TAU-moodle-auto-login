@@ -12,11 +12,13 @@
 // @grant        none
 // ==/UserScript==
 
+var ID_NUMBER = "1234567"
+
 (function() {
     'use strict';
 
     function myFunction(){
-        document.forms[0].elements["Ecom_User_Pid"].value="YOUR_ID";
+        document.forms[0].elements["Ecom_User_Pid"].value=ID_NUMBER;
         document.querySelector("body > form > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > input").click()
 
     }

@@ -1,5 +1,5 @@
 # Auto login to TAU moodle
-For installing it the script follow these steps:
+For installing the script follow these steps:
 1. Install `TAMPERMONKEY` extention to your browser.
 2. Go to this [link](https://greasyfork.org/en/scripts/424813-tau-moodle-auto-login) and install the script.
 3. Click the `TAMPERMONKEY` icon and go to the Dashboard.
