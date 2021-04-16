@@ -2,7 +2,7 @@
 // @name         TAU-Moodle auto login
 // @name:he           כניסה אוטומטית למודל
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  An automatic login script for TAU moodle.
 // @description:he  מאפשר להכנס למודל של תל אביב מהר
 // @author       Ofir Kedem
@@ -21,7 +21,7 @@
     function myFunction(){
         var ID_NUMBER = "1234567"
 
-        document.forms[0].elements["Ecom_User_Pid"].value=ID_NUMBER;
+        document.querySelector("body > form > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > input[type=text]").value=ID_NUMBER;
         setTimeout(clickLogin, 1000);
     }
 
