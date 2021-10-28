@@ -2,50 +2,65 @@
 // @name         TAU-Moodle auto login
 // @name:he           כניסה אוטומטית למודל
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  An automatic login script for TAU moodle.
 // @description:he  מאפשר להכנס למודל של תל אביב מהר
-// @author       Ofir Kedem
+// @author       Ofir Kedem & Guy Morag
 // @include      https://nidp.tau.ac.il/*
 // @match        https://moodle.tau.ac.il/my/
 // @match        https://moodle.tau.ac.il/
+// @match        https://moodle.tau.ac.il/mod/resource/*
 // @grant        none
 // ==/UserScript==
+
 (function() {
     'use strict';
 
-    function clickLogin(){
-        document.querySelector("body > form > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(7) > td:nth-child(2) > input").click()
+    var loginDetails = {
+        userName: "",
+        idNumber: "123456789",
+        password: "",
     }
 
-    function myFunction(){
-        var ID_NUMBER = "1234567"
+    function login(){
+        document.querySelector("input#Ecom_User_ID").value = loginDetails.userName;
+        document.querySelector("input#Ecom_User_Pid").value = loginDetails.idNumber;
+        document.querySelector("input#Ecom_Password").value = loginDetails.password;
 
-        document.querySelector("body > form > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > input[type=text]").value=ID_NUMBER;
-        setTimeout(clickLogin, 1000);
+        setTimeout(clickLoginButton, 200);
     }
 
-    function redirectME() {
-        var classt = document.getElementsByClassName('usertext');
-        if (classt.length === 0) {
-            window.location.href = 'https://moodle.tau.ac.il/login/index.php';
+    function clickLoginButton(){
+        document.querySelector("button#loginButton2").click()
+    }
+
+    function isLoggedIn() {
+        return document.getElementsByClassName('usertext').length > 0
+    }
+
+    function redirectToLogin() {
+        window.location.href = 'https://moodle.tau.ac.il/login/index.php';
+    }
+
+    var host = window.location.host;
+
+    if (host == "moodle.tau.ac.il") {
+        if (!isLoggedIn()) {
+            // login if needed
+            redirectToLogin();
+        } else {
+            // do other things when logged in
+            if (window.location.pathname == "/mod/resource/view.php") {
+                // click on link to document
+                document.querySelector("div.resourceworkaround a").click()
+                window.close()
+            }
         }
-
-    }
-    function redirectME2() {
-        if (document.referrer.includes('sason')) {
-            window.location.href = 'https://moodle.tau.ac.il/my/';
-        }
-
-    }
-
-    var tnai=window.location.host;
-    if (tnai=="moodle.tau.ac.il") {
-        // redirectME2();
-        redirectME();
-    } else if (tnai=="nidp.tau.ac.il") {
-        setTimeout(myFunction, 1000);
-    } else {
+    } else if (host == "nidp.tau.ac.il") {
+        window.addEventListener('load', (event) => {
+            // wait for 'load' to allow reacting faster without setTimeOut
+            login()
+        });
     }
 
 })();
